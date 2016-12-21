@@ -4,7 +4,9 @@
 
     angular.module('myApp',[])
 
-    .controller('myController',myController);
+    .controller('LunchCheckController',myController);
+
+    myController.$inject = ['$scope'];
 
     function myController($scope)
     {
@@ -13,8 +15,7 @@
         $scope.checkForItems=function()
         {
             var items=[];
-            items=$scope.foodItems.split(',').filter(function(el) {return el.length != 0});
-           
+            items=$scope.foodItems.split(',').filter(function(el) {return el.length != 0});           
             var empties = items.filter(function(el) {return el ==" "}).length
             if(empties)
             $scope.message="Please fill empty food item name";
@@ -26,10 +27,7 @@
             $scope.message="Please enter data first";
             else
                 $scope.message="Enjoy!";
-            }
-              
-              
-
+            }                            
         }
 
     }
